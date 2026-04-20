@@ -1,0 +1,137 @@
+:root {
+    --primary-red: #cc0000;
+    --dark-red: #990000;
+    --light-bg: #f4f6f9;
+    --white: #ffffff;
+    --text-dark: #2c3e50;
+    --text-muted: #7f8c8d;
+    --border-color: #e0e6ed;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-hover: 0 10px 20px rgba(204, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+.main-header {
+    background-color: var(--white);
+    border-bottom: 3px solid var(--primary-red);
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 40px;
+}
+
+.header-content h1 {
+    color: var(--primary-red);
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+.header-content p {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 50px 20px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.dashboard-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de hover profesional */
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary-red);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: bottom;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: #f1c4c4;
+}
+
+.dashboard-card:hover::before {
+    transform: scaleY(1);
+}
+
+.card-icon {
+    background-color: #fff0f0;
+    color: var(--primary-red);
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.card-info h2 {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.card-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Para tarjetas que aún no están listas */
+.dashboard-card.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.dashboard-card.disabled:hover {
+    transform: none;
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-color);
+}
+.dashboard-card.disabled:hover::before {
+    transform: scaleY(0);
+}

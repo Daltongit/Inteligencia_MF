@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio IA | Búsqueda a Ciegas y Heurística</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-brain"></i> Lab IA</h2>
+                <button class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            </div>
+            <ul class="nav-links">
+                <li><button class="tab-btn active" onclick="openTab(event, 'prob1')">1. Jarras de Agua</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob2')">2. Cuadrados Mágicos</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob3')">3. El Mono y el Plátano</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob4')">4. Análisis de Árbol 1</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob5')">5. Árbol de Expresiones</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob6')">6. Recorridos Pre/In/Post</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob7')">7. Reconstrucción ABB</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob8')">8. Recorridos Múltiples</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob9')">9. Notación Posfija</button></li>
+                <li><button class="tab-btn" onclick="openTab(event, 'prob10')">10. Dibujo de Árboles</button></li>
+            </ul>
+        </nav>
+
+        <main class="content-area">
+            <header class="top-header">
+                <h1>Búsqueda a Ciegas y Búsqueda Heurística</h1>
+                <p>Computación - Octavo Nivel</p>
+            </header>
+
+            <section id="prob1" class="tab-content active-content">
+                <div class="card">
+                    <h2>1. Problema de las Jarras de Agua</h2>
+                    <p>Objetivo: Obtener exactamente 4 litros en la jarra de 5 litros.</p>
+                    
+                    <div class="simulator-area">
+                        <div class="jug-container">
+                            <div class="jug jug-5l">
+                                <div class="water" id="water5l" style="height: 0%;"></div>
+                                <span class="jug-label">5 Litros (<span id="txt5l">0</span>L)</span>
+                            </div>
+                            <div class="jug jug-3l">
+                                <div class="water" id="water3l" style="height: 0%;"></div>
+                                <span class="jug-label">3 Litros (<span id="txt3l">0</span>L)</span>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button class="btn-primary" onclick="playWaterAnimation()"><i class="fas fa-play"></i> Animar Solución</button>
+                            <button class="btn-secondary" onclick="resetWater()"><i class="fas fa-undo"></i> Reiniciar</button>
+                        </div>
+                        <div class="log-area" id="waterLog">Presiona "Animar Solución" para comenzar...</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="prob2" class="tab-content">
+                <div class="card">
+                    <h2>2. Cuadrados Mágicos (Algoritmo Siamés)</h2>
+                    <p>Generación automática de cuadros mágicos de orden impar.</p>
+                    <div class="controls">
+                        <select id="matrixSize" class="input-select">
+                            <option value="3">3 x 3</option>
+                            <option value="5">5 x 5</option>
+                            <option value="7">7 x 7</option>
+                        </select>
+                        <button class="btn-primary" onclick="generateMagicSquare()"><i class="fas fa-magic"></i> Generar</button>
+                    </div>
+                    <div class="matrix-container" id="magicSquareContainer"></div>
+                </div>
+            </section>
+
+            <section id="prob3" class="tab-content"><div class="card"><h2>3. El Mono y el Plátano</h2><p>Representación del espacio de estados en progreso...</p></div></section>
+            <section id="prob4" class="tab-content"><div class="card"><h2>4. Análisis de Árbol 1</h2><p>Renderizador de grafos en construcción...</p></div></section>
+            <section id="prob5" class="tab-content"><div class="card"><h2>5. Árbol de Expresiones</h2><p>Estructura de nodos en construcción...</p></div></section>
+            <section id="prob6" class="tab-content"><div class="card"><h2>6. Recorridos Pre/In/Post</h2><p>Animación de recorrido en construcción...</p></div></section>
+            <section id="prob7" class="tab-content"><div class="card"><h2>7. Reconstrucción ABB</h2><p>Generador de árbol desde recorridos en construcción...</p></div></section>
+            <section id="prob8" class="tab-content"><div class="card"><h2>8. Recorridos Múltiples</h2><p>Visor interactivo en construcción...</p></div></section>
+            <section id="prob9" class="tab-content"><div class="card"><h2>9. Notación Posfija</h2><p>Evaluador de expresiones en construcción...</p></div></section>
+            <section id="prob10" class="tab-content"><div class="card"><h2>10. Dibujo de Árboles</h2><p>Canvas gráfico en construcción...</p></div></section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

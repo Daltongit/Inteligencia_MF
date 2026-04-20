@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab IA | 1. Jarras de Agua</title>
+    <link rel="stylesheet" href="1.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <nav class="top-nav">
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Volver al Dashboard</a>
+        <div class="nav-title">
+            <h1>Práctica 01: Búsqueda de Estados</h1>
+            <span>Problema de las Jarras de Agua</span>
+        </div>
+    </nav>
+
+    <main class="workspace">
+        <section class="visualizer-panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-eye"></i> Visualizador Gráfico</h2>
+                <span class="badge">Meta: 4 Litros en la jarra grande</span>
+            </div>
+            
+            <div class="canvas-area">
+                <div class="jug-container">
+                    <div class="jug-wrapper">
+                        <div class="jug jug-5l">
+                            <div class="target-line"></div>
+                            <div class="water" id="water5l" style="height: 0%;"></div>
+                        </div>
+                        <div class="jug-info">
+                            <h3>Jarra A</h3>
+                            <p>Capacidad: 5L</p>
+                            <div class="current-vol">Actual: <span id="txt5l">0</span>L</div>
+                        </div>
+                    </div>
+
+                    <div class="jug-wrapper">
+                        <div class="jug jug-3l">
+                            <div class="water" id="water3l" style="height: 0%;"></div>
+                        </div>
+                        <div class="jug-info">
+                            <h3>Jarra B</h3>
+                            <p>Capacidad: 3L</p>
+                            <div class="current-vol">Actual: <span id="txt3l">0</span>L</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="control-panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-terminal"></i> Panel de Control</h2>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-primary" onclick="startSimulation()" id="btnStart">
+                    <i class="fas fa-play"></i> Iniciar Búsqueda
+                </button>
+                <button class="btn btn-secondary" onclick="resetSimulation()">
+                    <i class="fas fa-redo"></i> Reiniciar
+                </button>
+            </div>
+
+            <div class="log-container">
+                <h3>Registro de Estados (Nodo Actual)</h3>
+                <ul id="stateLog" class="state-log">
+                    <li class="system-msg">Sistema inicializado. Esperando ejecución...</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="1.js"></script>
+</body>
+</html>

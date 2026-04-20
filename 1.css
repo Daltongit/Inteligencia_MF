@@ -1,0 +1,94 @@
+:root {
+    --primary-red: #cc0000;
+    --bg-dark: #1e1e2f;
+    --bg-panel: #2a2a40;
+    --text-light: #e0e0e0;
+    --water-color: rgba(52, 152, 219, 0.85);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body { background-color: var(--bg-dark); color: var(--text-light); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+/* Navegación */
+.top-nav { background-color: var(--bg-panel); padding: 15px 30px; display: flex; align-items: center; border-bottom: 2px solid var(--primary-red); box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 10;}
+.btn-back { color: var(--text-light); text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 5px; transition: var(--transition); display: flex; gap: 8px; align-items: center;}
+.btn-back:hover { background: var(--primary-red); color: white; }
+.nav-title { margin-left: 30px; }
+.nav-title h1 { font-size: 1.2rem; color: white; }
+.nav-title span { font-size: 0.85rem; color: #a0a0b0; }
+
+/* Workspace */
+.workspace { display: flex; flex: 1; overflow: hidden; }
+
+.panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.panel-header h2 { font-size: 1.1rem; color: #fff; }
+.badge { background: var(--primary-red); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
+
+/* Visualizador (Izquierda) */
+.visualizer-panel { flex: 2; padding: 30px; display: flex; flex-direction: column; background: radial-gradient(circle at center, #2a2a40 0%, #1e1e2f 100%); }
+.canvas-area { flex: 1; display: flex; justify-content: center; align-items: center; }
+
+/* Estilos de Jarras */
+.jug-container { display: flex; gap: 80px; align-items: flex-end; }
+.jug-wrapper { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+
+.jug {
+    background: var(--glass-bg);
+    border: 3px solid var(--glass-border);
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Dimensiones proporcionales */
+.jug-5l { width: 140px; height: 280px; }
+.jug-3l { width: 110px; height: 168px; } /* 3/5 de la altura de la de 5L */
+
+/* Línea de meta en la jarra de 5L (al 80% que son 4L) */
+.target-line { position: absolute; bottom: 80%; width: 100%; border-bottom: 2px dashed #e74c3c; z-index: 10; }
+.target-line::after { content: '4L Meta'; position: absolute; right: -60px; top: -10px; color: #e74c3c; font-size: 0.8rem; font-weight: bold; }
+
+/* El agua */
+.water {
+    width: 100%;
+    background: linear-gradient(180deg, #5dade2 0%, #2874a6 100%);
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+/* Efecto de superficie del agua */
+.water::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: rgba(255,255,255,0.3); }
+
+/* Info de la jarra */
+.jug-info { text-align: center; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); min-width: 120px;}
+.jug-info h3 { color: #fff; margin-bottom: 5px; font-size: 1rem;}
+.jug-info p { font-size: 0.8rem; color: #888; }
+.current-vol { margin-top: 10px; font-weight: bold; color: #3498db; font-size: 1.1rem; }
+
+/* Panel de Control (Derecha) */
+.control-panel { flex: 1; min-width: 350px; background-color: var(--bg-panel); padding: 30px; display: flex; flex-direction: column; border-left: 1px solid rgba(0,0,0,0.5); box-shadow: -5px 0 15px rgba(0,0,0,0.2); }
+
+.controls { display: flex; gap: 10px; margin-bottom: 30px; }
+.btn { flex: 1; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: var(--transition); display: flex; justify-content: center; align-items: center; gap: 8px; }
+.btn-primary { background-color: var(--primary-red); color: white; }
+.btn-primary:hover { background-color: #e74c3c; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(204,0,0,0.3);}
+.btn-primary:disabled { background-color: #555; cursor: not-allowed; transform: none; box-shadow: none;}
+.btn-secondary { background-color: rgba(255,255,255,0.1); color: white; }
+.btn-secondary:hover { background-color: rgba(255,255,255,0.2); }
+
+.log-container { flex: 1; display: flex; flex-direction: column; background: #1a1a24; border-radius: 8px; padding: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+.log-container h3 { font-size: 0.9rem; color: #888; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+
+.state-log { list-style: none; overflow-y: auto; flex: 1; padding-right: 5px; }
+.state-log li { padding: 10px 15px; margin-bottom: 8px; background: rgba(255,255,255,0.03); border-left: 3px solid #3498db; border-radius: 4px; font-size: 0.9rem; font-family: monospace; animation: slideIn 0.3s ease; }
+.state-log li.success { border-left-color: #2ecc71; background: rgba(46, 204, 113, 0.1); color: #2ecc71; font-weight: bold;}
+.system-msg { color: #888; font-style: italic; border-left-color: #888 !important; }
+
+@keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
